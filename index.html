@@ -14,8 +14,23 @@
     gtag('config', 'G-M92NBFNSXX');
   </script>
   <script src="arcads.js"></script>
+  <script type="text/javascript">
+  const arcAds = new ArcAds({
+    dfp: {
+      id: '21735400992',
+      collapseEmptyDivs: true
+    }
+  })
+arcAds.registerAd({
+  id: 'div-id-123',
+  slotName: 'test123',
+  dimensions: [[970, 66], [970, 90], [970, 250], [980, 90], [980, 120]],
+  display: 'desktop'
+})
+</script>
 </head>
 <body>
   <h1>Test</h1>
+  <div id="div-id-123"></div>
 </body>
 </html>
