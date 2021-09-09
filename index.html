@@ -6,54 +6,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ads Test</title>
-  <!-- Google Tag Manager -->
-  <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-KBSJQ8C');
-  </script>
-  <!-- End Google Tag Manager -->
-
-  <script src="arcads.js"></script>
+  <script src="arcads2.js"></script>
   <script type="text/javascript">
+    window.adFunction = function (ad) {
+      return new Promise(function (resolve, reject) {
+        console.log(ad)
+        resolve()
+      });
+    }
+    console.log('trying...')
     const arcAds = new ArcAds({
       dfp: {
         id: '21735400992',
-        collapseEmptyDivs: true
+        collapseEmptyDivs: false
       }
+    }, (event) => {
+      console.log('Advertisement has loaded...', event)
     })
   </script>
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBSJQ8C" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
   <h1>Test</h1>
-  <div id="div-id-123"></div>
+  <div id="div-id-12345" style="min-width: 200px; min-height: 200px"></div>
   <script>
     arcAds.registerAd({
-      id: 'div-id-123',
-      slotName: '/21735400992/3c04eeb6-101c-11ec-82a8-0242ac130003',
+      id: 'div-id-12345',
+      slotName: '/test12345',
       dimensions: [
-        [200, 200],
+        [200, 200],[200, 200],[200, 200]
       ],
-      display: 'desktop'
+      adType: 'banner-ad',
+      display: 'all',
+      sizemap: {
+        breakpoints: [ [1280, 0], [800, 0], [0, 0] ],
+        refresh: true
+      }
     })
     console.log(arcAds)
-
   </script>
 </body>
 
